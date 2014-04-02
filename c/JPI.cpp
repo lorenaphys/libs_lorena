@@ -6,7 +6,7 @@
 
 using namespace std;
 TCLAP::CmdLine cmd("Command description message", ' ', "0.1");
-TCLAP::ValueArg<double> M("M","Parametro_M", "Parametro M",false,50.0,"double",cmd);
+TCLAP::ValueArg<double> M("M","Parametro_M", "Parametro M",false,50,"double",cmd);
 TCLAP::ValueArg<double> L("L","Parametro_L", "Parametro L",false,5.0,"double",cmd);
 
 int main(int argc, char* argv[])
@@ -23,9 +23,11 @@ double t=0.0;
 
 double dt=0.0001;
 
-double x [50];
+int m=M.getValue();
 
-double N [50];
+double x [m];
+
+double N [m];
 
 double a,b;
 
@@ -44,7 +46,7 @@ for(int i=0; i < M.getValue(); i++)
 	
 	x[i]=(2*i + 1)*h/2;
 	
-	cout << x[i] << endl;
+	cout<< x[i]<< endl;
 	
 }
 
@@ -52,7 +54,7 @@ while(t < 1 + dt)
 {
     for(int j=0;j < 100000;j++)
     {
-	for(int i = 0;i < 50;i++)
+	for(int i = 0;i < M.getValue();i++)
 	{
 	    if(N[i] > 0)
 	    {
@@ -80,6 +82,13 @@ while(t < 1 + dt)
 	}
     }
     t= t + dt;
+}
+
+for(int i=0; i < M.getValue(); i++)
+{
+	
+	cout<< N[i]<< endl;
+	
 }
 
 
