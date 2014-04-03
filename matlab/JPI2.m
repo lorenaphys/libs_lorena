@@ -11,6 +11,7 @@ j=1;
 for t = 1:10000
     for i = 1:M
        if N(i) >0
+           j = 0;
            aux = N(i);
           while j < aux + 1
              a = rand(1,1);
