@@ -26,9 +26,9 @@ cout.precision(12);
 
 //Declarando las variables
 
-double h=L.getValue()/M.getValue();
+double h = L.getValue()/M.getValue();
 
-int m=M.getValue();
+int m = M.getValue();
 
 double x [m];
 
@@ -48,7 +48,7 @@ double p2 = d*dt/(pow(h,2));
 
 double P1 = 1.0 - k/d;
 
-int j = 1;
+int j;
 
 	
 //Inicializando en 0 N
@@ -71,14 +71,14 @@ for(int i=0; i < m; i++)
 	cout<< x[i]<< endl;
 }
 
-for(int t = 0; t < m; t++)
+for(int t = 0; t < 10000; t++)
 {
 	for(int i = 0; i < m; i++)
 	{
 		if(N[i] > 0)
 		{
 			int aux = N[i];
-			j = 0;
+			j = 1;
 			while(j < aux + 1)
 			{
 				a = randu();
@@ -89,12 +89,12 @@ for(int t = 0; t < m; t++)
 				if(i > 0 && a >= p1)
 				{
 					b = randu();
-					if(b >= 0.5 && i < m-1)
+					if(b <= 0.5 && i < m-1)
 					{
 						N[i] = N[i] - 1;
 						N[i+1] = N[i+1] + 1;
 					}
-					if(b < 0.5 && i > 0)
+					if(b > 0.5)
 					{
 						N[i] = N[i] - 1;
 						N[i-1] = N[i-1] + 1;
@@ -106,10 +106,22 @@ for(int t = 0; t < m; t++)
 	}
 }
 
+//int sum = 0;
+
+//for(int n = 0; n < m; n++)
+//{
+	//sum = sum + N[n];
+//}
+
+	//cout << sum << endl;
+	
+
 for(int l = 0; l < m; l++)
 {
 	cout << N[l] << endl;
 }
+
+
 
 
 }
