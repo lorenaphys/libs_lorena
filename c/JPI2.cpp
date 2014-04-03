@@ -36,7 +36,7 @@ int N [m];
 
 double a,b;
 
-int sum = 0;
+double dt = 0.0001;
 
 double d = D.getValue();
 
@@ -75,9 +75,41 @@ for(int t = 0; t < m; t++)
 {
 	for(int i = 0; i < m; i++)
 	{
-		int aux = N[i];
-		while()
+		if(N[i] > 0)
+		{
+			int aux = N[i];
+			j = 0;
+			while(j < aux + 1)
+			{
+				a = randu();
+				if(i == 0 && a >= P1)
+				{
+					N[i] = N[i] - 1;
+				}
+				if(i > 0 && a >= p1)
+				{
+					b = randu();
+					if(b >= 0.5 && i < m-1)
+					{
+						N[i] = N[i] - 1;
+						N[i+1] = N[i+1] + 1;
+					}
+					if(b < 0.5 && i > 0)
+					{
+						N[i] = N[i] - 1;
+						N[i-1] = N[i-1] + 1;
+					}
+				}
+				j++;
+			}
+		}
 	}
 }
+
+for(int l = 0; l < m; l++)
+{
+	cout << N[l] << endl;
+}
+
 
 }
