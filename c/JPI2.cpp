@@ -34,7 +34,7 @@ double x [m];
 
 int N [m];
 
-double a,b;
+double a,b,c;
 
 double dt = 0.0001;
 
@@ -84,7 +84,11 @@ for(int t = 0; t < 10000; t++)
 				a = randu();
 				if(i == 0 && a >= P1)
 				{
-					N[i] = N[i] - 1;
+					c = randu();
+					if(c <= 0.5)
+					{
+						N[i] = N[i] - 1;
+					}
 				}
 				if(i > 0 && a >= p1)
 				{
