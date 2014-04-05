@@ -50,6 +50,8 @@ double P1 = 1.0 - k/d;
 
 int j;
 
+int aux;
+
 	
 //Inicializando en 0 N
 
@@ -62,6 +64,7 @@ N[10]=75000;
 
 N[20]=25000;
 
+int count [m];
 
 for(int i=0; i < m; i++)
 {
@@ -71,13 +74,26 @@ for(int i=0; i < m; i++)
 	cout<< x[i]<< endl;
 }
 
+for(int i = 0; i < m; i++)
+{
+	count[i] = 0;
+}
+
 for(int t = 0; t < 10000; t++)
 {
 	for(int i = 0; i < m; i++)
 	{
 		if(N[i] > 0)
 		{
-			int aux = N[i];
+			if(i == 1)
+			{
+			aux = N[i];
+			}
+			else
+			{
+			aux = N[i] - count[i];
+			count[i] = 0;
+			}
 			j = 1;
 			while(j < aux + 1)
 			{
