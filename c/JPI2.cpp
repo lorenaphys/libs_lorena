@@ -50,7 +50,7 @@ double P1 = 1.0 - k/d;
 
 int j;
 
-int aux;
+int aux [m];
 
 	
 //Inicializando en 0 N
@@ -64,7 +64,7 @@ N[10]=75000;
 
 N[20]=25000;
 
-int count [m];
+//int count [m];
 
 for(int i=0; i < m; i++)
 {
@@ -76,7 +76,7 @@ for(int i=0; i < m; i++)
 
 for(int i = 0; i < m; i++)
 {
-	count[i] = 0;
+	aux[i] = N[i];
 }
 
 for(int t = 0; t < 10000; t++)
@@ -85,17 +85,8 @@ for(int t = 0; t < 10000; t++)
 	{
 		if(N[i] > 0)
 		{
-			if(i == 1)
-			{
-			aux = N[i];
-			}
-			else
-			{
-			aux = N[i] - count[i];
-			count[i] = 0;
-			}
 			j = 1;
-			while(j < aux + 1)
+			while(j < aux[i] + 1)
 			{
 				a = randu();
 				if(i == 0 && a >= P1)
@@ -124,6 +115,10 @@ for(int t = 0; t < 10000; t++)
 			}
 		}
 	}
+			for(int i = 0; i < m; i++)
+			{
+			aux[i] = N[i];
+			}
 }
 
 //int sum = 0;
